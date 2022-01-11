@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <script src="book.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="newBookBtn">NEW BOOK</button>
+    <!-- Modal Section -->
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="close">+</div>
+            <form action="">
+                <h3>New Book</h3>
+                <hr id="hrTitle">
+                <div id="textInput">
+                    <input type="text" placeholder="Title">
+                    <input type="text" placeholder="Author">
+                    <input type="text" placeholder="Number of Pages">
+                </div>
+                <div id="checkBox">
+                    <label for="markAsRead">Mark as Read: </label><input type="checkbox" id="markAsRead"></input>
+                </div>
+                <button id="addBookBtn">Add New Book</button>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
