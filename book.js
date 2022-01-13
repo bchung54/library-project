@@ -19,12 +19,23 @@ function addBookToLibrary(title, author, length, read) {
 
 // Displays entire library collection
 function display() {
-    let body = document.getElementsByTagName("body")[0];
+    let collection = document.getElementById('collection');
+    
+    // Clear contents from collection
+    while (collection.firstChild) {
+        collection.removeChild(collection.lastChild);
+    }
+
+    // Loops through myLibrary and displays each book as a card
     myLibrary.forEach(function(item) {
-        let row = document.createElement("tr");
-        let rowText = document.createTextNode(item.info());
-        row.appendChild(rowText);
-        body.appendChild(row);
+        let container = document.createElement('div');
+        container.classList.add('collection-container');
+        let card = document.createElement('div');
+        card.classList.add('card');
+        let cardText = document.createTextNode(item.info());
+        card.appendChild(cardText);
+        container.appendChild(card)
+        collection.appendChild(container);
     });
 }
 
@@ -64,4 +75,8 @@ addBookBtn.addEventListener('submit', (e) => {
 
 addBookToLibrary("Harry Potter", "JK Rowling", 305, true);
 addBookToLibrary("Great Gatsby", "F Scott Fitzgerald", 280, false);
+addBookToLibrary("Great", "F Scott", 250, false);
+addBookToLibrary("Chicken", "F Scott Fitzgerald", 100, true);
+
+
 display();
