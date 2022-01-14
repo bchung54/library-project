@@ -27,17 +27,35 @@ function display() {
     }
 
     // Loops through myLibrary and displays each book as a card
-    myLibrary.forEach(function(item) {
+    myLibrary.forEach(function(element, index) {
+        
         let container = document.createElement('div');
         container.classList.add('collection-container');
+        
         let card = document.createElement('div');
         card.classList.add('card');
-        let cardText = document.createTextNode(item.info());
+        
+        let cardText = document.createTextNode(element.info());
+
+        let removeButton = document.createElement('button');
+        removeButton.setAttribute('dataIndex', index);
+        removeButton.classList.add('remove-button');
+        removeButton.addEventListener('click', (e) => {
+            console.log(e.target.getAttribute('dataIndex'));
+            myLibrary.splice(parseInt(e.target.getAttribute('dataIndex')), 1);
+            display();
+        })
+
+        removeButton.appendChild(document.createTextNode('Remove'));
+        
         card.appendChild(cardText);
+        card.appendChild(removeButton);
         container.appendChild(card)
         collection.appendChild(container);
     });
 }
+
+// Event: Remove book from library collection
 
 // Event: Display modal form for adding a new book when new book button is clicked
 document.getElementById('newBookBtn').addEventListener('click', () => {
