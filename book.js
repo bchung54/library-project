@@ -6,9 +6,14 @@ function Book(title, author, length, read) {
     this.author = author;
     this.length = length;
     this.read = read;
+    
     this.info = function() {
         const readstring = read ? "already read" : "not read yet";
         return `${title} by ${author}, ${length} pages, ${readstring}`;
+    };
+    
+    this.toggleReadStatus = function () {
+        this.read = !this.read;
     }
 }
 
@@ -38,24 +43,37 @@ function display() {
         let cardText = document.createTextNode(element.info());
 
         let removeButton = document.createElement('button');
-        removeButton.setAttribute('dataIndex', index);
+        removeButton.setAttribute('data-index', index);
         removeButton.classList.add('remove-button');
+
+        // Event: Remove book from library collection when remove button is clicked
         removeButton.addEventListener('click', (e) => {
-            console.log(e.target.getAttribute('dataIndex'));
-            myLibrary.splice(parseInt(e.target.getAttribute('dataIndex')), 1);
+            console.log(e.target.getAttribute('data-index'));
+            myLibrary.splice(parseInt(e.target.getAttribute('data-index')), 1);
             display();
         })
 
         removeButton.appendChild(document.createTextNode('Remove'));
         
+        let readStatusButton = document.createElement('button');
+        readStatusButton.setAttribute('data-index', index);
+        readStatusButton.classList.add('read-status-button');
+
+        // Event: Change read status when button is clicked
+        readStatusButton.addEventListener('click', (e) => {
+            myLibrary[parseInt(e.target.getAttribute('data-index'))].toggleReadStatus();
+            display();
+        })
+
+        readStatusButton.appendChild(document.createTextNode(myLibrary[index].read ? 'Read' : 'Unread'));
+
         card.appendChild(cardText);
         card.appendChild(removeButton);
-        container.appendChild(card)
+        card.appendChild(readStatusButton);
+        container.appendChild(card);
         collection.appendChild(container);
     });
 }
-
-// Event: Remove book from library collection
 
 // Event: Display modal form for adding a new book when new book button is clicked
 document.getElementById('newBookBtn').addEventListener('click', () => {
