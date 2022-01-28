@@ -1,19 +1,21 @@
 let myLibrary = [];
 
 // Create a new book
-function Book(title, author, length, read) {
-    this.title = title;
-    this.author = author;
-    this.length = length;
-    this.read = read;
+class Book{
+    constructor(title, author, length, read) {
+        this.title = title;
+        this.author = author;
+        this.length = length;
+        this.read = read;
+    }
     
-    this.info = function() {
-        const readstring = read ? "already read" : "not read yet";
-        return `${title} by ${author}, ${length} pages, ${readstring}`;
+    get info() {
+        const readstring = this.read ? "already read" : "not read yet";
+        return `${this.title} by ${this.author}, ${this.length} pages, ${this.readstring}`;
     };
     
-    this.toggleReadStatus = function () {
-        this.read = !this.read;
+    set readStatus(read) {
+        this.read = read;
     }
 }
 
@@ -40,7 +42,7 @@ function display() {
         let card = document.createElement('div');
         card.classList.add('card');
         
-        let cardText = document.createTextNode(element.info());
+        let cardText = document.createTextNode(element.info);
 
         let removeButton = document.createElement('button');
         removeButton.setAttribute('data-index', index);
