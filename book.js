@@ -11,11 +11,11 @@ class Book{
     
     get info() {
         const readstring = this.read ? "already read" : "not read yet";
-        return `${this.title} by ${this.author}, ${this.length} pages, ${this.readstring}`;
+        return `${this.title} by ${this.author}, ${this.length} pages, ${readstring}`;
     };
     
-    set readStatus(read) {
-        this.read = read;
+    readStatusToggle() {
+        this.read = !this.read;
     }
 }
 
@@ -63,7 +63,7 @@ function display() {
 
         // Event: Change read status when button is clicked
         readStatusButton.addEventListener('click', (e) => {
-            myLibrary[parseInt(e.target.getAttribute('data-index'))].toggleReadStatus();
+            myLibrary[parseInt(e.target.getAttribute('data-index'))].readStatusToggle();
             display();
         })
 
