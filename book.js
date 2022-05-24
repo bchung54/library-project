@@ -39,8 +39,8 @@ function display() {
         let container = document.createElement('div');
         container.classList.add('collection-container');
         
-        let card = document.createElement('div');
-        card.classList.add('card');
+        // let card = document.createElement('div');
+        // card.classList.add('card');
         
         let cardText = document.createTextNode(element.info);
 
@@ -69,10 +69,9 @@ function display() {
 
         readStatusButton.appendChild(document.createTextNode(myLibrary[index].read ? 'Read' : 'Unread'));
 
-        card.appendChild(cardText);
-        card.appendChild(removeButton);
-        card.appendChild(readStatusButton);
-        container.appendChild(card);
+        container.appendChild(cardText);
+        container.appendChild(removeButton);
+        container.appendChild(readStatusButton);
         collection.appendChild(container);
     });
 }
