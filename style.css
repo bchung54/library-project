@@ -15,14 +15,19 @@ body {
 
 /* Header Section */
 header {
+    /* Display */
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 12vh;
-    background-color: rgba(10, 0, 10, 0.445);
-    font-size: 75px;
-    color: rgb(12, 86, 134);
     padding: 0 100px;
+
+    /* Color */
+    background-color: rgba(10, 0, 10, 0.445);
+    color: rgb(12, 86, 134);
+
+    /* Text */
+    font-size: 75px;
 }
 
 header > * {
@@ -41,11 +46,13 @@ h1 {
 button {
     height: 100px;
     width: 150px;
+    margin: 20px;
+
+    background-color: rgba(238, 108, 255, 0.651);
+    color: rgb(12, 86, 134);
+    
     font-family: Exon;
     font-size: 36px;
-    color: rgb(12, 86, 134);
-    background-color: rgba(238, 108, 255, 0.651);
-    margin: 20px;
 }
 
 /* Content Section */
@@ -59,33 +66,34 @@ main {
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     align-items: center;
     gap: 200px 0;
-    padding: 50px 250px;
+    padding: 50px 200px;
 }
 
 /* Card */
 .card {
-    padding: 16px;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.5);
-    transition: 0.3s;
-    width: 500px;
-    height: 300px;
-    border:magenta solid 2px;
-    text-align: center;
     justify-content: center;
     align-items: center;
+    height: 300px;
+    width: 500px;
+    padding: 16px;
+    border:magenta solid 2px;
     margin: auto;
+    text-align: center;
+
     background-color: white;
+    
+    box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.3s;
 }
 
 hr { 
     display: block;
     width: 90%;
+    border: 2px inset magenta ;
     margin-bottom: 0.5em;
-    border-style: inset;
-    border-width: 2px;
-    border-color: magenta;
+
     background-color: magenta;
 }
 
@@ -106,8 +114,10 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+
     background-color: rgb(196, 0, 0);
     color: white;
+
     font-size: 28px;
 }
 
@@ -125,78 +135,88 @@ hr {
 
 /* Modal Section */
 .bg-modal {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 0;
-    display: flex;
+
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-content {
-    width: 800px;
+    position: relative;
     height: 500px;
-    background-color: white;
+    width: 800px;
     border-radius: 10px;
     text-align: center;
+    
+    background-color: white;
+    
     font-family: Exon;
     font-size: 32px;
-    position: relative;
 }
 
 h3 {
     margin: 20px;
+
     color:rgb(12, 86, 134);
+
     font-family: Londinia;
     font-size: 40px;
 }
 
 input {
     width: 75%;
+    padding: 4px;
+    margin: 10px;
+    
     font-family: Exon;
     font-size: 24px;
-    margin: 10px;
-    padding: 4px;
 }
 
 input[type=checkbox] {
     width: 50px;
-    transform: scale(1.7);
     margin: 0 15px;
+
+    transform: scale(1.7);
 }
 
 .input-lines {
-    border-color:rgb(102, 138, 205);
-    border-width: 1px;
     width: 80%;
+    border-width: 1px;
+    border-color:rgb(140, 177, 245);
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
 
 #checkBox {
-    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 75%;
     margin: 12px 108px;
 }
 
 #addBookBtn {
-    transform: scale(1.5);
-    font-size: 20px;
-    margin: 10px 0;
     height: 50px;
     margin: 20px;
+
+    font-size: 20px;
+
+    transform: scale(1.5);
 }
 
 .close {
     position: absolute;
     top:0;
     right: 14px;
-    font-size: 50px;
+
+    font-size: 75px;
+
     transform: rotate(45deg);
     cursor: pointer;
 }
