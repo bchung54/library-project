@@ -37,12 +37,21 @@ function display() {
     myLibrary.forEach(function(element, index) {
         
         let container = document.createElement('div');
-        container.classList.add('collection-container');
+        container.classList.add('card');
         
-        // let card = document.createElement('div');
-        // card.classList.add('card');
-        
-        let cardText = document.createTextNode(element.info);
+        let cardTitle = document.createElement('div');
+        cardTitle.textContent = element.title;
+        cardTitle.classList.add('card-title');
+
+        let cardDetails = document.createElement('div');
+        cardDetails.textContent = `by ${element.author} (${element.length} pages)`;
+        cardDetails.classList.add('card-details');
+
+        if (element.read) {
+            container.classList.add('read');
+        } else {
+            container.classList.add('unread');
+        }
 
         let removeButton = document.createElement('button');
         removeButton.setAttribute('data-index', index);
@@ -50,12 +59,15 @@ function display() {
 
         // Event: Remove book from library collection when remove button is clicked
         removeButton.addEventListener('click', (e) => {
-            console.log(e.target.getAttribute('data-index'));
             myLibrary.splice(parseInt(e.target.getAttribute('data-index')), 1);
             display();
         })
 
-        removeButton.appendChild(document.createTextNode('Remove'));
+        removeButton.textContent = "Remove";
+        let trashcan = document.createElement('i');
+        trashcan.classList.add('material-icons');
+        trashcan.textContent = "delete";
+        removeButton.appendChild(trashcan);
         
         let readStatusButton = document.createElement('button');
         readStatusButton.setAttribute('data-index', index);
@@ -69,9 +81,11 @@ function display() {
 
         readStatusButton.appendChild(document.createTextNode(myLibrary[index].read ? 'Read' : 'Unread'));
 
-        container.appendChild(cardText);
-        container.appendChild(removeButton);
+        container.appendChild(cardTitle);
+        container.appendChild(document.createElement('hr'));
+        container.appendChild(cardDetails);
         container.appendChild(readStatusButton);
+        container.appendChild(removeButton);
         collection.appendChild(container);
     });
 }

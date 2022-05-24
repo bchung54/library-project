@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <script src="book.js" defer></script>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <button id="newBookBtn">NEW BOOK</button>
-
-    <section id="collection"></section>
+    <header>
+        <div class="header-left">
+            <img src="./imgs/Book Shelf-595b40b65ba036ed117d4328.svg" alt="library-icon" id="header-icon">
+            <h1>LIBRARY</h1>
+        </div>
+        <div class="header-right">
+            <button id="newBookBtn" class="header-action">Add Book</button>
+            <button id="login" class="header-action">Login</button>
+        </div>
+    </header>
+    <main>
+        <section id="collection"></section>
+    </main>
     <!-- Modal Section -->
     <div class="bg-modal">
         <div class="modal-content">
@@ -21,8 +33,11 @@
                 <hr>
                 <div id="textInput">
                     <input type="text" id="newBookTitle" placeholder="Title">
+                    <hr class="input-lines">
                     <input type="text" id="newBookAuthor" placeholder="Author">
+                    <hr class="input-lines">
                     <input type="number" id="newBookPages" placeholder="Number of Pages">
+                    <hr class="input-lines">
                 </div>
                 <div id="markAsRead">
                     <label for="markAsRead">Mark as Read: </label>
