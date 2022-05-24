@@ -36,26 +36,39 @@ function display() {
     // Loops through myLibrary and displays each book as a card
     myLibrary.forEach(function(element, index) {
         
-        let container = document.createElement('div');
+        const container = document.createElement('div');
+        const cardTitle = document.createElement('div');
+        const cardDetails = document.createElement('div');
+        const removeButton = document.createElement('button');
+        const trashIcon = document.createElement('i');
+        const readStatusButton = document.createElement('button');
+
+        // Add card classes
         container.classList.add('card');
-        
-        let cardTitle = document.createElement('div');
-        cardTitle.textContent = element.title;
-        cardTitle.classList.add('card-title');
-
-        let cardDetails = document.createElement('div');
-        cardDetails.textContent = `by ${element.author} (${element.length} pages)`;
-        cardDetails.classList.add('card-details');
-
         if (element.read) {
             container.classList.add('read');
         } else {
             container.classList.add('unread');
         }
+        
+        // Add card text details and classes
+        cardTitle.textContent = element.title;
+        cardTitle.classList.add('card-title');
+        cardDetails.textContent = `by ${element.author} (${element.length} pages)`;
+        cardDetails.classList.add('card-details');
 
-        let removeButton = document.createElement('button');
+        // Add attributes, class and text to remove button
         removeButton.setAttribute('data-index', index);
         removeButton.classList.add('remove-button');
+        removeButton.textContent = "Remove";
+        trashIcon.classList.add('material-icons');
+        trashIcon.textContent = "delete";
+        removeButton.appendChild(trashIcon);
+
+        // Add attribute, class and text to read status button
+        readStatusButton.setAttribute('data-index', index);
+        readStatusButton.classList.add('read-status-button');
+        readStatusButton.appendChild(document.createTextNode(myLibrary[index].read ? 'Read' : 'Unread'));
 
         // Event: Remove book from library collection when remove button is clicked
         removeButton.addEventListener('click', (e) => {
@@ -63,23 +76,11 @@ function display() {
             display();
         })
 
-        removeButton.textContent = "Remove";
-        let trashcan = document.createElement('i');
-        trashcan.classList.add('material-icons');
-        trashcan.textContent = "delete";
-        removeButton.appendChild(trashcan);
-        
-        let readStatusButton = document.createElement('button');
-        readStatusButton.setAttribute('data-index', index);
-        readStatusButton.classList.add('read-status-button');
-
         // Event: Change read status when button is clicked
         readStatusButton.addEventListener('click', (e) => {
             myLibrary[parseInt(e.target.getAttribute('data-index'))].readStatusToggle();
             display();
         })
-
-        readStatusButton.appendChild(document.createTextNode(myLibrary[index].read ? 'Read' : 'Unread'));
 
         container.appendChild(cardTitle);
         container.appendChild(document.createElement('hr'));
@@ -126,8 +127,6 @@ addBookBtn.addEventListener('submit', (e) => {
 
 addBookToLibrary("Harry Potter", "JK Rowling", 305, true);
 addBookToLibrary("Great Gatsby", "F Scott Fitzgerald", 280, false);
-addBookToLibrary("Great", "F Scott", 250, false);
-addBookToLibrary("Chicken", "F Scott Fitzgerald", 100, true);
 
 
 display();
